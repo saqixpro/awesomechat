@@ -2,10 +2,16 @@ import {Formik} from 'formik';
 import React, {useState} from 'react';
 import FullButton from '../../components/Base/FullButton';
 import Input from '../../components/Base/TextInput';
-import {Container, Text} from './style';
-import {View, Pressable} from 'react-native';
+import {Container, Text} from '../../components/StyledComponents';
+import {View, Pressable, Image, PixelRatio} from 'react-native';
 import Animated, {FadeInUp, FadeOutDown, Layout} from 'react-native-reanimated';
+import assets from '../../assets';
+import AwesomeChat from '../../components/Core/AwesomeChat';
+import { useNavigation } from '@react-navigation/native';
+import screens from '../../constants/screens';
 const LoginScreen = () => {
+  const navigation = useNavigation();
+
   const validate = (values, props) => {
     const errors = {};
 
@@ -26,18 +32,7 @@ const LoginScreen = () => {
 
   return (
     <Container>
-      <Container flex={1.3}>
-        <Text style={{fontSize: 40, fontWeight: '600'}}>Awesome Chat!</Text>
-        <Text
-          style={{
-            fontSize: 20,
-            fontFamily: 'BeauRivage-Regular',
-            marginTop: 10,
-            fontWeight: '300',
-          }}>
-          Experience the innovation... Connect with the world!
-        </Text>
-      </Container>
+      <AwesomeChat />
       <Formik
         onSubmit={values => {
           alert(JSON.stringify(values));
@@ -91,7 +86,7 @@ const LoginScreen = () => {
                   marginTop: 50,
                 }}>
                 <Text>Don't Have an Account?</Text>
-                <Pressable>
+                <Pressable onPress={() => navigation.navigate(screens.signup)}>
                   <Text fontWeight="600">Sign Up</Text>
                 </Pressable>
                 <Text>Here</Text>

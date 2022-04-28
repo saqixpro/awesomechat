@@ -4,6 +4,7 @@ import {colors} from '../../constants/colors';
 export const Container = styled.View`
   flex: ${props => props.flex || 1};
   align-items: center;
+  position: relative;
   justify-content: ${props => props.justify || 'center'};
 `;
 
