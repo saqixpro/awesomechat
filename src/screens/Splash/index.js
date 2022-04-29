@@ -9,10 +9,13 @@ import {
   BodyContainer,
   TextContainer,
   ButtonContainer,
+  Filter,
 } from './styles';
 import Animated, {SlideInRight, Layout, FadeIn} from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
 import screens from '../../constants/screens';
+import { colors } from '../../constants/colors';
+import { Spacer } from '../../components/StyledComponents';
 const SplashScreen = () => {
   const navigation = useNavigation();
 
@@ -21,31 +24,28 @@ const SplashScreen = () => {
   });
 
   return (
-    <Container>
-      <ImageContainer>
-        <Animated.View entering={SlideInRight} layout={Layout.springify()}>
-          <Image source={assets.WELCOME} />
-        </Animated.View>
-      </ImageContainer>
+    <Container source={assets.COVER}>
+      <Filter>
+      <Spacer />
       <BodyContainer>
         <Animated.View
           style={{flex: 1}}
           layout={Layout.springify()}
           entering={FadeIn.delay(300)}>
           <TextContainer>
-            <Text fontSize={18} fontWeight="700">
-              Welcome to Awesome Chat!
+            <Text color={colors.icewhite} fontSize={38} fontWeight="700">
+              Awesome Chat
             </Text>
-            <Text fontSize={20} fontFamily="BeauRivage-Regular">
-              We reinvented the chat with out innovative new idea, let's
-              discover what's inside Awesome Chat!
+            <Text color={colors.icewhite} fontSize={30} fontFamily="BeauRivage-Regular">
+              Connect with style, Connect with Confidence!
             </Text>
           </TextContainer>
         </Animated.View>
         <ButtonContainer>
-          <FullButton onPress={toLoginPage} title="Get Started" />
+          <FullButton textColor={colors.icewhite} onPress={toLoginPage} title="Get Started" />
         </ButtonContainer>
       </BodyContainer>
+      </Filter>
     </Container>
   );
 };

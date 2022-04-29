@@ -10,7 +10,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {colors} from '../../../constants/colors';
-import {width} from '../../../constants/theme';
+import {frame} from '../../../constants/theme';
 import Feather from 'react-native-vector-icons/Feather';
 
 const Input = ({
@@ -22,6 +22,7 @@ const Input = ({
   value,
   onBlur,
   error,
+  margin,
   ...props
 }) => {
   const val = useSharedValue(0);
@@ -44,7 +45,7 @@ const Input = ({
   });
 
   return (
-    <Animated.View style={shake}>
+    <Animated.View style={[{marginVertical: margin ?? 0}, shake]}>
       {!!error && (
         <Text
           style={{
@@ -58,25 +59,26 @@ const Input = ({
       <Neomorph
         darkShadowColor={colors.shadow1}
         lightShadowColor={colors.shadow2}
+        inner
         style={{
-          width: width / 1.1,
+          width: frame.width / 1.1,
           backgroundColor: colors.neomorph,
           borderWidth: !!error ? 1 : 0,
           borderColor: 'red',
-          shadowRadius: 10,
-          shadowOffset: {width: 10, height: 10},
+          shadowRadius: 3,
+          shadowOffset: {width: 3, height: 3},
           shadowOpacity: 1,
-          height: width / 7,
+          height: frame.width / 7,
           padding: 10,
           marginVertical: 10,
           borderRadius: 10,
           flexDirection: 'row',
           alignItems: 'center',
-          paddingRight: width / 9,
+          paddingRight: frame.width / 9,
         }}>
         <TextInput
-          style={{width: '100%', height: '100%', fontFamily: 'Poppins-Regular'}}
-          placeholderTextColor={colors.midgrey}
+          style={{width: '100%', height: '100%', fontFamily: 'Poppins-Regular', color: colors.textColor}}
+          placeholderTextColor={colors.textColor}
           placeholder={placeholder}
           onChangeText={onChangeText}
           secureTextEntry={password && secureText}

@@ -17,5 +17,6 @@ export const theme = {
         }
 };
 
-export const width = screen.width;
-export const height = screen.height;
+const {width, height} = screen;
+
+export const frame = {width, height};

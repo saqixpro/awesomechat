@@ -86,7 +86,7 @@ const LoginScreen = () => {
                   marginTop: 50,
                 }}>
                 <Text>Don't Have an Account?</Text>
-                <Pressable onPress={() => navigation.navigate(screens.signup)}>
+                <Pressable onPress={() => navigation.navigate(screens.signup.personalInfo)}>
                   <Text fontWeight="600">Sign Up</Text>
                 </Pressable>
                 <Text>Here</Text>
